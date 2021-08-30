@@ -1,23 +1,29 @@
+using System.Linq;
 using System.Collections.Generic;
 
-public class Algorithms
+namespace Algorithms
 {
-    public static void Counting_Sort(List<int> list)
-    {
-        int n = list.Count;
-        List<int> count = new List<int>(n);
-        List<int> output = new List<int>(n);
- 
-        for(int i = 0; i < count.Count; ++i) count[i] = 0;
-        for(int i = 0; i < n; ++i) ++count[list[i]];
-        for(int i = 1; i <= count.Count; ++i) count[i] += count[i - 1];
-
-        for(int i = n - 1; i >= 0; i--)
-        {
-            output[count[list[i]] - 1] = list[i];
-            --count[list[i]];
-        }
-
-        for(int i = 0; i < n; ++i) list[i] = output[i];
-    }
+	public class CountingSort
+	{
+		public static void Sort(List<int> list)
+		{
+			int min = list.Min();
+			int max = list.Max();
+			int range = max - min + 1;
+			List<int> count = new List<int>(range);
+			List<int> output = new List<int>(list.Count);
+			
+			for(int i = 0; i < list.Count; i++) count[list[i] - min]++;
+			
+			for(int i = 1; i < count.Count; i++) count[i] += count[i - 1];
+			
+			for(int i = list.Count - 1; i >= 0; i--)
+			{
+				output[count[list[i] - min] - 1] = list[i];
+				count[list[i] - min]--;
+			}
+			
+			for(int i = 0; i < list.Count; i++) list[i] = output[i];
+		}
+	}
 }

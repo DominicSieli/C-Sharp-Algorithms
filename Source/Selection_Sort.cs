@@ -1,24 +1,27 @@
 using System.Collections.Generic;
 
-public class Algorithms
+namespace Algorithms
 {
-    public static void Selection_Sort(List<int> list)
-    {
-        int min_index = 0;
+	public class SelectionSort
+	{
+		public static void Sort(List<int> list)
+		{
+			int minIndex = 0;
 
-        for(int i = 0; i < list.Count; i++)
-        {
-            min_index = i;
+			for(int i = 0; i < list.Count; i++)
+			{
+				minIndex = i;
 
-            for(int j = i + 1; j < list.Count; j++)
-            {
-                if(list[j] < list[min_index]) min_index = j;
-            }
+				for(int j = i + 1; j < list.Count; j++)
+				{
+					if(list[j] < list[minIndex]) minIndex = j;
+				}
 
-            int a = list[i];
-            int b = list[min_index];
-            list[i] = b;
-            list[min_index] = a;
-        }
-    }
+				int a = list[i];
+				int b = list[minIndex];
+				list[i] = b;
+				list[minIndex] = a;
+			}
+		}
+	}
 }

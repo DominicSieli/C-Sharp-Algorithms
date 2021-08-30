@@ -1,40 +1,43 @@
 using System.Collections.Generic;
 
-public class Algorithms
+namespace Algorithms
 {
-    private static int Partition(List<int> list, int start_index, int end_index)
-    {
-        int pivot = list[start_index];
-        int middle_index = start_index;
+	public class QuickSort
+	{
+		private static int Partition(List<int> list, int startIndex, int endIndex)
+		{
+			int pivot = list[startIndex];
+			int middleIndex = startIndex;
 
-        for(int i = start_index + 1; i <= end_index; ++i)
-        {
-            if(list[i] < pivot)
-            {
-                ++middle_index;
-                int a = list[i];
-                int b = list[middle_index];
-                list[i] = b;
-                list[middle_index] = a;
-            }
-        }
+			for(int i = startIndex + 1; i <= endIndex; ++i)
+			{
+				if(list[i] < pivot)
+				{
+					++middleIndex;
+					int a = list[i];
+					int b = list[middleIndex];
+					list[i] = b;
+					list[middleIndex] = a;
+				}
+			}
 
-        int x = list[start_index];
-        int y = list[middle_index];
-        list[start_index] = y;
-        list[middle_index] = x;
-        
-        return middle_index;
-    }
+			int x = list[startIndex];
+			int y = list[middleIndex];
+			list[startIndex] = y;
+			list[middleIndex] = x;
+			
+			return middleIndex;
+		}
 
-    public static void Quick_Sort(List<int> list, int start_index, int end_index)
-    {
-        if(start_index < end_index)
-        {
-            int pivot_index = Partition(list, start_index, end_index);
+		public static void Sort(List<int> list, int startIndex, int endIndex)
+		{
+			if(startIndex < endIndex)
+			{
+				int pivotIndex = Partition(list, startIndex, endIndex);
 
-            Quick_Sort(list, start_index, pivot_index - 1);
-            Quick_Sort(list, pivot_index + 1, end_index);
-        }
-    }
+				Sort(list, startIndex, pivotIndex - 1);
+				Sort(list, pivotIndex + 1, endIndex);
+			}
+		}
+	}
 }

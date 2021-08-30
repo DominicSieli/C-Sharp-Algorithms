@@ -1,38 +1,35 @@
-#include <vector>
+using System.Collections.Generic;
 
 namespace Algorithms
 {
-	template<typename T>
-	void Normal_Sort(std::vector<T>& vector)
+	public class NormalSort
 	{
-		if(vector.size() < 2)
-        {
-            return;
-        }
-
-		T min = vector[0];
-		T max = vector[0];
-		std::vector<T> temp_vector(vector.size());
-
-		for(unsigned int i = 0; i < vector.size(); i++)
+		public static void Sort(List<int> list)
 		{
-			if(vector[i] < min)
+			int min = list[0];
+			int max = list[0];
+			List<int> tempList(list.Count);
+
+			for(int i = 0; i < list.Count; i++)
 			{
-				min = vector[i];
+				if(list[i] < min)
+				{
+					min = list[i];
+				}
+
+				if(list[i] > max)
+				{
+					max = list[i];
+				}
 			}
 
-			if(vector[i] > max)
+			for(int i = 0; i < list.size(); i++)
 			{
-				max = vector[i];
+				int index = (((float)list[i] - (float)min)) / (((float)max - (float)min)) * ((float)list.Count - 1);
+				tempList[index] = list[i];
 			}
-		}
 
-		for(unsigned int i = 0; i < vector.size(); i++)
-		{
-			unsigned int index = (((float)vector[i] - (float)min)) / (((float)max - (float)min)) * ((float)vector.size() - 1);
-			temp_vector[index] = vector[i];
+			list = tempList;
 		}
-
-		vector = temp_vector;
 	}
 }
