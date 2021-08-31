@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class BinarySearch
+	public static class BinarySearch
 	{
 		public static int Search(List<int> list, int target)
 		{

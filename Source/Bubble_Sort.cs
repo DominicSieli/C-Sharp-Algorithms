@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class BubbleSort
+	public static class BubbleSort
 	{
 		public static void Sort(List<int> list)
 		{

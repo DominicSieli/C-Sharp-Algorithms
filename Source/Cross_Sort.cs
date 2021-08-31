@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class CrossSort
+	public static class CrossSort
 	{
 		public static void Sort(List<int> list)
 		{

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class QuickSort
+	public static class QuickSort
 	{
 		private static int Partition(List<int> list, int startIndex, int endIndex)
 		{

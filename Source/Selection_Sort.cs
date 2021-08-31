@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class SelectionSort
+	public static class SelectionSort
 	{
 		public static void Sort(List<int> list)
 		{
