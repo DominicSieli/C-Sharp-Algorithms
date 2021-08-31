@@ -2,54 +2,43 @@ using System.Collections.Generic;
 
 namespace Algorithms
 {
-	public class MergeSort
+	public static class MergeSort
 	{
 		private static void Merge(List<int> list, int startIndex, int middleIndex, int endIndex)
 		{
-			int totalElements = endIndex - startIndex + 1;
+			int totalElements = (endIndex - startIndex) + 1;
+			List<int> sortList = new List<int>(new int[totalElements]);
 
-			List<int> tempList = new List<int>(totalElements);
-
+			int mergeIndex = 0;
 			int leftIndex = startIndex;
 			int rightIndex = middleIndex + 1;
-			int mergeIndex = 0;
 
 			while(leftIndex <= middleIndex && rightIndex <= endIndex)
 			{
 				if(list[leftIndex] <= list[rightIndex])
 				{
-					tempList[mergeIndex] = list[leftIndex];
-					++leftIndex;
+					sortList[mergeIndex++] = list[leftIndex++];
 				}
 				else
 				{
-					tempList[mergeIndex] = list[rightIndex];
-					++rightIndex;
+					sortList[mergeIndex++] = list[rightIndex++];
 				}
-
-				++mergeIndex;
 			}
 
 			while(leftIndex <= middleIndex)
 			{
-				tempList[mergeIndex] = list[leftIndex];
-				++leftIndex;
-				++mergeIndex;
+				sortList[mergeIndex++] = list[leftIndex++];
 			}
 
 			while(rightIndex <= endIndex)
 			{
-				tempList[mergeIndex] = list[rightIndex];
-				++rightIndex;
-				++mergeIndex;
+				sortList[mergeIndex++] = list[rightIndex++];
 			}
 
-			for(int i = 0; i < totalElements; ++i)
+			for(int i = 0; i < totalElements; i++)
 			{
-				list[startIndex + i] = tempList[i];
+				list[startIndex + i] = sortList[i];
 			}
-
-			return;
 		}
 
 		public static void Sort(List<int> list, int startIndex, int endIndex)
@@ -62,8 +51,6 @@ namespace Algorithms
 				Sort(list, middleIndex + 1, endIndex);
 				Merge(list, startIndex, middleIndex, endIndex);
 			}
-
-			return;
 		}
 	}
 }
