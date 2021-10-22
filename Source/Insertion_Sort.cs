@@ -4,26 +4,20 @@ namespace Algorithms
 {
 	public static class InsertionSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
-			for(int i = 0; i < list.Count; i++)
+			for(int i = 0; i < array.Length; i++)
 			{
-				int j;
-				int reference_value = list[i];
+				int j = 0;
+				int key = array[i];
 
 				for(j = i - 1; j >= 0; j--)
 				{
-					if(list[j] > reference_value)
-					{
-						list[j + 1] = list[j];
-					}
-					else
-					{
-						break;
-					}
+					if(array[j] > key) array[j + 1] = array[j];
+					else break;
 				}
 
-				list[j + 1] = reference_value;
+				array[j + 1] = key;
 			}
 		}
 	}

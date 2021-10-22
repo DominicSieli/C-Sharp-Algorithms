@@ -4,23 +4,23 @@ namespace Algorithms
 {
 	public static class BinarySearch
 	{
-		public static int Search(List<int> list, int target)
+		public static int Search(int[] array, int target)
 		{
 			int left = 0;
 			int median = 0;
-			int right = list.Count - 1;
+			int right = array.Length - 1;
 
-			if(target < list[left] || target > list[right]) return -1;
+			if(target < array[left] || target > array[right]) return -1;
 
 			while(left <= right)
 			{
 				median = left + (right - left) / 2;
 
-				if(list[left] == target) return left;
-				if(list[right] == target) return right;
-				if(list[median] == target) return median;
-				if(list[median] < target) left = median + 1;
-				if(list[median] > target) right = median - 1;
+				if(array[left] == target) return left;
+				if(array[right] == target) return right;
+				if(array[median] == target) return median;
+				if(array[median] < target) left = median + 1;
+				if(array[median] > target) right = median - 1;
 			}
 
 			return -1;

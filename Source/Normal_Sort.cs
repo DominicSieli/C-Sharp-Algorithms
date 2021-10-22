@@ -4,26 +4,28 @@ namespace Algorithms
 {
 	public static class NormalSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
-			int min = list[0];
-			int max = list[0];
-			List<int> sortList = new List<int>(new int[list.Count]);
+			int min = array[0];
+			int max = array[0];
+			int[] output = new int[array.Length];
 
-			for(int i = 0; i < list.Count; i++)
+			for(int i = 0; i < array.Length; i++)
 			{
-				if(list[i] < min) min = list[i];
-				if(list[i] > max) max = list[i];
+				if(array[i] < min) min = array[i];
+				if(array[i] > max) max = array[i];
 			}
 
-			for(int i = 0; i < list.Count; i++)
+			for(int i = 0; i < array.Length; i++)
 			{
-				int index = (int)(((float)(list[i] - min) / (float)(max - min)) * (list.Count - 1));
-				sortList[index] = list[i];
+				int index = (int)(((float)(array[i] - min) / (float)(max - min)) * (array.Length - 1));
+				output[index] = array[i];
 			}
-			
-			list.Clear();
-			list.AddRange(sortList);
+
+			for(int i = 0; i < array.Length; i++)
+			{
+				array[i] = output[i];
+			}
 		}
 	}
 }

@@ -4,7 +4,7 @@ namespace Algorithms
 {
 	public static class BubbleSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
 			bool sorted = false;
 
@@ -12,15 +12,15 @@ namespace Algorithms
 			{
 				sorted = true;
 
-				for(int i = 0; i < list.Count - 1; i++)
+				for(int i = 0; i < array.Length - 1; i++)
 				{
-					if(list[i] > list[i + 1])
+					if(array[i] > array[i + 1])
 					{
 						sorted = false;
-						int i1 = list[i];
-						int i2 = list[i + 1];
-						list[i] = i2;
-						list[i + 1] = i1;
+						int i1 = array[i];
+						int i2 = array[i + 1];
+						array[i] = i2;
+						array[i + 1] = i1;
 					}
 				}
 			}

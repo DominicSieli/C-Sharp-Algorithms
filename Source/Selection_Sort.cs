@@ -4,23 +4,23 @@ namespace Algorithms
 {
 	public static class SelectionSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
 			int minIndex = 0;
 
-			for(int i = 0; i < list.Count; i++)
+			for(int i = 0; i < array.Length; i++)
 			{
 				minIndex = i;
 
-				for(int j = i + 1; j < list.Count; j++)
+				for(int j = i + 1; j < array.Length; j++)
 				{
-					if(list[j] < list[minIndex]) minIndex = j;
+					if(array[j] < array[minIndex]) minIndex = j;
 				}
 
-				int a = list[i];
-				int b = list[minIndex];
-				list[i] = b;
-				list[minIndex] = a;
+				int a = array[i];
+				int b = array[minIndex];
+				array[i] = b;
+				array[minIndex] = a;
 			}
 		}
 	}

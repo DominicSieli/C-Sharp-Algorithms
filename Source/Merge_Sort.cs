@@ -4,10 +4,10 @@ namespace Algorithms
 {
 	public static class MergeSort
 	{
-		private static void Merge(List<int> list, int startIndex, int middleIndex, int endIndex)
+		private static void Merge(int[] array, int startIndex, int middleIndex, int endIndex)
 		{
 			int totalElements = (endIndex - startIndex) + 1;
-			List<int> sortList = new List<int>(new int[totalElements]);
+			int[] sortList = new int[totalElements];
 
 			int mergeIndex = 0;
 			int leftIndex = startIndex;
@@ -15,41 +15,41 @@ namespace Algorithms
 
 			while(leftIndex <= middleIndex && rightIndex <= endIndex)
 			{
-				if(list[leftIndex] <= list[rightIndex])
+				if(array[leftIndex] <= array[rightIndex])
 				{
-					sortList[mergeIndex++] = list[leftIndex++];
+					sortList[mergeIndex++] = array[leftIndex++];
 				}
 				else
 				{
-					sortList[mergeIndex++] = list[rightIndex++];
+					sortList[mergeIndex++] = array[rightIndex++];
 				}
 			}
 
 			while(leftIndex <= middleIndex)
 			{
-				sortList[mergeIndex++] = list[leftIndex++];
+				sortList[mergeIndex++] = array[leftIndex++];
 			}
 
 			while(rightIndex <= endIndex)
 			{
-				sortList[mergeIndex++] = list[rightIndex++];
+				sortList[mergeIndex++] = array[rightIndex++];
 			}
 
 			for(int i = 0; i < totalElements; i++)
 			{
-				list[startIndex + i] = sortList[i];
+				array[startIndex + i] = sortList[i];
 			}
 		}
 
-		public static void Sort(List<int> list, int startIndex, int endIndex)
+		public static void Sort(int[] array, int startIndex, int endIndex)
 		{
 			if(startIndex < endIndex)
 			{
 				int middleIndex = (startIndex + endIndex) / 2;
 
-				Sort(list, startIndex, middleIndex);
-				Sort(list, middleIndex + 1, endIndex);
-				Merge(list, startIndex, middleIndex, endIndex);
+				Sort(array, startIndex, middleIndex);
+				Sort(array, middleIndex + 1, endIndex);
+				Merge(array, startIndex, middleIndex, endIndex);
 			}
 		}
 	}

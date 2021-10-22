@@ -5,25 +5,27 @@ namespace Algorithms
 {
 	public static class CountingSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
-			int min = list.Min();
-			int max = list.Max();
+			int min = array.Min();
+			int max = array.Max();
 			int range = (max - min) + 1;
-			List<int> count = new List<int>(new int[range]);
-			List<int> output = new List<int>(new int[list.Count]);
-			
-			for(int i = 0; i < list.Count; i++) count[list[i] - min]++;
-			for(int i = 1; i < count.Count; i++) count[i] += count[i - 1];
-			
-			for(int i = list.Count - 1; i >= 0; i--)
+			int[] count = new int[range];
+			int[] output = new int[array.Length];
+
+			for(int i = 0; i < array.Length; i++) count[array[i] - min]++;
+			for(int i = 1; i < count.Length; i++) count[i] += count[i - 1];
+
+			for(int i = array.Length - 1; i >= 0; i--)
 			{
-				output[count[list[i] - min] - 1] = list[i];
-				count[list[i] - min]--;
+				output[count[array[i] - min] - 1] = array[i];
+				count[array[i] - min]--;
 			}
-			
-			list.Clear();
-			list.AddRange(output);
+
+			for(int i = 0; i < array.Length; i++)
+			{
+				array[i] = output[i];
+			}
 		}
 	}
 }

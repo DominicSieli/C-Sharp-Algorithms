@@ -4,12 +4,12 @@ namespace Algorithms
 {
 	public static class CrossSort
 	{
-		public static void Sort(List<int> list)
+		public static void Sort(int[] array)
 		{
-			bool sorted = false;
 			int j = 0;
 			int l = 0;
-			int r = list.Count - 1;
+			int r = array.Length - 1;
+			bool sorted = false;
 
 			while(sorted == false)
 			{
@@ -17,33 +17,33 @@ namespace Algorithms
 
 				for(int i = l; i < r; i++)
 				{
-					j = (list.Count - i) - 1;
+					j = (array.Length - i) - 1;
 
-					if(i < j && list[i] > list[j])
+					if(i < j && array[i] > array[j])
 					{
 						sorted = false;
-						int a = list[i];
-						int b = list[j];
-						list[i] = b;
-						list[j] = a;
+						int a = array[i];
+						int b = array[j];
+						array[i] = b;
+						array[j] = a;
 					}
 
-					if(list[i] > list[i + 1])
+					if(array[i] > array[i + 1])
 					{
 						sorted = false;
-						int a = list[i];
-						int b = list[i + 1];
-						list[i] = b;
-						list[i + 1] = a;
+						int a = array[i];
+						int b = array[i + 1];
+						array[i] = b;
+						array[i + 1] = a;
 					}
 
-					if(list[j] < list[j - 1])
+					if(array[j] < array[j - 1])
 					{
 						sorted = false;
-						int a = list[j];
-						int b = list[j - 1];
-						list[j] = b;
-						list[j - 1] = a;
+						int a = array[j];
+						int b = array[j - 1];
+						array[j] = b;
+						array[j - 1] = a;
 					}
 				}
 
