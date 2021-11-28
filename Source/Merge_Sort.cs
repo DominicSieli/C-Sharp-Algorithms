@@ -1,55 +1,47 @@
-using System.Collections.Generic;
-
 namespace Algorithms
 {
 	public static class MergeSort
 	{
-		private static void Merge(int[] array, int startIndex, int middleIndex, int endIndex)
+		private static void Merge(int[] array, int start, int middle, int end)
 		{
-			int totalElements = (endIndex - startIndex) + 1;
-			int[] sortList = new int[totalElements];
+			int index = 0;
+			int left = start;
+			int right = middle + 1;
+			int segment = (end - start) + 1;
 
-			int mergeIndex = 0;
-			int leftIndex = startIndex;
-			int rightIndex = middleIndex + 1;
+			int[] auxiliary = new int[segment];
 
-			while(leftIndex <= middleIndex && rightIndex <= endIndex)
+			while(left <= middle && right <= end)
 			{
-				if(array[leftIndex] <= array[rightIndex])
-				{
-					sortList[mergeIndex++] = array[leftIndex++];
-				}
-				else
-				{
-					sortList[mergeIndex++] = array[rightIndex++];
-				}
+				if(array[left] <= array[right]) auxiliary[index++] = array[left++];
+				else auxiliary[index++] = array[right++];
 			}
 
-			while(leftIndex <= middleIndex)
+			while(left <= middle)
 			{
-				sortList[mergeIndex++] = array[leftIndex++];
+				auxiliary[index++] = array[left++];
 			}
 
-			while(rightIndex <= endIndex)
+			while(right <= end)
 			{
-				sortList[mergeIndex++] = array[rightIndex++];
+				auxiliary[index++] = array[right++];
 			}
 
-			for(int i = 0; i < totalElements; i++)
+			for(int i = 0; i < segment; i++)
 			{
-				array[startIndex + i] = sortList[i];
+				array[start + i] = auxiliary[i];
 			}
 		}
 
-		public static void Sort(int[] array, int startIndex, int endIndex)
+		public static void Sort(int[] array, int start, int end)
 		{
-			if(startIndex < endIndex)
+			if(start < end)
 			{
-				int middleIndex = (startIndex + endIndex) / 2;
+				int middle = (start + end) / 2;
 
-				Sort(array, startIndex, middleIndex);
-				Sort(array, middleIndex + 1, endIndex);
-				Merge(array, startIndex, middleIndex, endIndex);
+				Sort(array, start, middle);
+				Sort(array, middle + 1, end);
+				Merge(array, start, middle, end);
 			}
 		}
 	}
